@@ -1,0 +1,164 @@
+.error
+{
+    color:red;
+    font-weight: bold;
+}
+
+.menu
+{
+    width: 800px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: auto;
+}
+
+.menu li 
+{
+    float:left;
+    list-style-type:none;
+    
+    
+}
+
+.menu a
+{
+    
+    display:block; 
+    padding:10px; 
+    text-decoration:none;
+    text-align:center;
+    color:white;
+    background-color:black;
+    border-radius: 5px;
+    border: 1px solid white;
+    width: 100px;
+
+    
+}
+
+.menu form
+{
+    float: right;
+}
+
+li
+{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.container
+{
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: auto;
+    
+}
+
+.form
+{
+    text-align: center;
+}
+
+#id
+{
+    float:right;
+}
+
+input
+{
+    width: 300px;
+    height: 30px;;
+    background-color:lightgray;
+    color: black;
+    border: 3px solid black;
+    border-radius: 5px; 
+    padding:10px;
+    font-size:15px;
+    margin: 5px;
+    
+
+    
+}
+
+textarea
+{
+    width: 300px;
+    height: 300px;;
+    background-color:lightgray;
+    color: black;
+    border: 3px solid black;
+    border-radius: 5px; 
+    padding:10px;
+    font-size: 15px;
+}
+
+.button
+{
+    width: 100px;
+    background-color:black;
+    color: white;
+    font-weight: bold;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding:10px;
+    float: right;
+    
+}
+
+.news
+{
+    float: right;
+}
+
+.footer
+{
+    text-align: center;
+}
+.center
+{
+    text-align: center;
+    width: 100px;
+    background-color:black;
+    color: white;
+    font-weight: bold;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding:20px;
+  
+}
+
+input[type=submit]
+{
+    width: 130px;
+    height: 40px;
+    padding: 10px 10px;
+    border-radius: 10px;
+ 
+}
+input[type=radio]
+{
+     
+    width:20px; 
+}
+label
+{
+    font-size:20px;
+}
+
+.radio
+{
+    width: 320px;
+    height: 50px;
+    border:3px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+
+hr
+{
+    margin:30px;
+}
