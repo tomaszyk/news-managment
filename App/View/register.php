@@ -12,10 +12,14 @@
     <form class = "form" action = "register" method = "post">
         <label>Imię</label><br>
         <input type = "text" name = "first_name"><br>
-        <span class = "error"><?php echo @$error_first_name; ?></span><br>
+        <span class = "error"><?php echo @$error_first_name1; ?></span><br>
+        <span class = "error"><?php echo @$error_first_name2; ?></span><br>
+        <span class = "error"><?php echo @$error_first_name3; ?></span><br>
         <label>Nazwisko</label><br>
         <input type = "text" name = "last_name"><br>
-        <span class = "error"><?php echo @$error_last_name; ?></span><br>
+        <span class = "error"><?php echo @$error_last_name1; ?></span><br>
+        <span class = "error"><?php echo @$error_last_name2; ?></span><br>
+        <span class = "error"><?php echo @$error_last_name3; ?></span><br>
         <label>Email</label><br>
         <input type = "email" name = "email"><br>
         <span class = "error"><?php echo @$error_email; ?></span><br>
@@ -27,7 +31,8 @@
         <span class = "error"><?php echo @$error_gender; ?></span><br>
         <label>Hasło</label><br>
         <input type = "password" name = "password"><br>
-        <span class = "error"><?php echo @$error_password; ?></span><br>
+        <span class = "error"><?php echo @$error_password1; ?></span><br>
+        <span class = "error"><?php echo @$error_password2; ?></span><br>
         <label>Powtórz hasło</label><br>
         <input type = "password" name = "repeted_password"><br>
         <span class = "error"><?php echo @$error_repeted_password; ?></span><br>

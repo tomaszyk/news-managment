@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+ob_start();
+
 use Core\Controller;
 use Core\View;
 use App\Model\DB_register;
@@ -31,7 +33,11 @@ class News extends Controller
     {
         if(isset($_POST['submit']))
         {
-            DB_register::add($_POST['name'], $_POST['description'], $_POST['is_active'], $this -> session -> getVariable('id_user'));
+            DB_register::add(htmlspecialchars($_POST['name']), 
+            htmlspecialchars($_POST['description']), 
+            $_POST['is_active'], 
+            $this -> session -> getVariable('id_user'));
+
             header('Location:mainlogin');
         }
         View::render('add.php');
@@ -47,7 +53,7 @@ class News extends Controller
 
         if(isset($_POST['submit']))
         {
-            DB_register::update($_POST['id_news'], $_POST['description'], $_POST['name']);
+            DB_register::update($_POST['id_news'], htmlspecialchars($_POST['description']), htmlspecialchars($_POST['name']));
             header('Location:mainlogin');
         }
    

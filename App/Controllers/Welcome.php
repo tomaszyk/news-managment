@@ -6,6 +6,8 @@ use Core\Controller;
 use Core\View;
 use App\Model\DB_register;
 
+ob_start();
+
 /**
  * plik autoloadera
  */
@@ -33,19 +35,51 @@ class Welcome extends Controller
              */
             $wszystkoOK = true;
 
+            if(!preg_match('/^[A-Z]{1}/', $_POST['first_name']))
+            {
+
+                $error_first_name1 = 'Imie musi się zaczynać wielką literą';
+                $wszystkoOK = false;
+
+            }
+
+            if(!preg_match('/[a-z]+$/', $_POST['first_name']))
+            {
+
+                $error_first_name2 = 'Imie zawiera niedozwolony znak';
+                $wszystkoOK = false;
+
+            }
+
             if(strlen($_POST['first_name']) < 3 || strlen($_POST['first_name']) > 15)
             {
                 
-                $error_first_name = 'Imię musi posiadać od 3 do 15 liter';
+                $error_first_name3 = 'Imię musi posiadać od 3 do 15 liter';
                 $wszystkoOK = false;
                 
+            }
+
+            if(!preg_match('/^[A-Z]{1}/', $_POST['last_name']))
+            {
+
+                $error_last_name1 = 'Nazwisko musi się zaczynać wielką literą';
+                $wszystkoOK = false;
+
+            }
+
+            if(!preg_match('/[a-z]+$/', $_POST['last_name']))
+            {
+
+                $error_last_name2 = 'Nazwisko zawiera niedozwolony znak';
+                $wszystkoOK = false;
+
             }
            
 
             if(strlen($_POST['last_name']) < 3 || strlen($_POST['last_name']) > 15)
             {
                 
-                $error_last_name = 'Nazwisko musi posiadać od 3 do 15 liter';
+                $error_last_name3 = 'Nazwisko musi posiadać od 3 do 15 liter';
                 $wszystkoOK = false;
             
             }  
@@ -65,9 +99,15 @@ class Welcome extends Controller
                 $error_gender = 'Zaznacz płeć';
             }
 
+            if(!preg_match('/^[a-zA-Z0-9]+$/', $_POST['password']))
+            {
+                $error_password1 = 'Hasło może zawierać tylko małe oraz duże litery lub cyfry';
+                $wszystkoOK = false;
+            }
+
             if(strlen($_POST['password']) < 8 || strlen($_POST['password']) > 20)
             {
-                $error_password = 'Hasło musi posiadać od 8 do 20 liter';
+                $error_password2 = 'Hasło musi posiadać od 8 do 20 znaków';
             
                 $wszystkoOK = false;
             }
@@ -85,12 +125,17 @@ class Welcome extends Controller
             if($wszystkoOK == false)
             {
                 View::render('register.php', [
-                    'error_first_name' => @$error_first_name,
-                     'error_last_name' => @$error_last_name,
-                      'error_email' => @$error_email,
-                       'error_gender' => @$error_gender,
-                        'error_password' => @$error_password,
-                         'error_repeted_password' => @$error_repeted_password
+                    'error_first_name1' => @$error_first_name1,
+                    'error_first_name2' => @$error_first_name2,
+                    'error_first_name3' => @$error_first_name3,
+                        'error_last_name1' => @$error_last_name1,
+                        'error_last_name2' => @$error_last_name2,
+                        'error_last_name3' => @$error_last_name3,
+                            'error_email' => @$error_email,
+                                'error_gender' => @$error_gender,
+                                    'error_password1' => @$error_password1,
+                                    'error_password2' => @$error_password2,
+                                        'error_repeted_password' => @$error_repeted_password
                          ]);
                          return false;
             }
@@ -100,7 +145,7 @@ class Welcome extends Controller
              */
             if($wszystkoOK == true)
             {
-                DB_register::register($_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['gender'], md5($_POST['password']));
+                DB_register::register(htmlspecialchars($_POST['first_name']), htmlspecialchars($_POST['last_name']), $_POST['email'], $_POST['gender'], md5($_POST['password']));
                 header('Location:login');
             }
         }
@@ -135,8 +180,9 @@ class Welcome extends Controller
             }
             else
             {
+    
                 $error_login = "Błędne dane logowania";
-                View::render('login.php', ['error_login' => $error_login]);
+                View::render('login.php', ['error_login' => $error_login, 'result' => $result]);
                 return false;
             }
         }

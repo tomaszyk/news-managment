@@ -18,6 +18,11 @@ class DB_register extends Model
     {
         $db_connect = parent::dbConnect();
 
+        $first_name = mysqli_real_escape_string($db_connect, $first_name);
+        $last_name = mysqli_real_escape_string($db_connect, $last_name);
+        $email = mysqli_real_escape_string($db_connect, $email);
+        $password = mysqli_real_escape_string($db_connect, $password);
+
         $is_active = 1;
 
         $date = new \DateTime();
@@ -34,6 +39,9 @@ class DB_register extends Model
     public static function login($email, $password)
     {
         $db_connect = parent::dbConnect();
+
+        $email = mysqli_real_escape_string($db_connect, $email);
+        $password = mysqli_real_escape_string($db_connect, $password);
         
         return $login = $db_connect -> query("SELECT * FROM users WHERE email = '$email' AND password = '$password'");
 
@@ -58,6 +66,10 @@ class DB_register extends Model
     public static function add($name, $description, $is_active, $id_user)
     {
         $db_connect = parent::dbConnect();
+
+        $name = mysqli_real_escape_string($db_connect, $name);
+        $description = mysqli_real_escape_string($db_connect, $description);
+
 
         $date = new \DateTime();
 
@@ -92,6 +104,9 @@ class DB_register extends Model
     public static function update($id_news, $description, $name)
     {
         $db_connect = parent::dbConnect();
+
+        $description = mysqli_real_escape_string($db_connect, $description);
+        $name = mysqli_real_escape_string($db_connect, $name);
 
         $date = new \DateTime();
 
